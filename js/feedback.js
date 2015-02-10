@@ -72,7 +72,7 @@ function db_insert(cb, infoObj){
   postRequest("db.insert", Array.prototype.slice.call(arguments));
 }
 function postRequest(api, args) {
-  var host = "http://192.168.1.128:8889";
+  var host = location.origin;
   var cb = args.shift();
   var obj2post = {};
   obj2post.api = api;

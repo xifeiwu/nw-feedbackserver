@@ -7,7 +7,7 @@ var HOME = process.env["HOME"];
 var DBPATH = "db.sqlite3";
 exports.DBPATH = DBPATH;
 
-var HTTPPORT = 8889;
+var HTTPPORT = 8088;
 exports.HTTPPORT = HTTPPORT;
 
 var log = function(string, type){
