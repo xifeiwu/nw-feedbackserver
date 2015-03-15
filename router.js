@@ -74,6 +74,9 @@ var mimeTypes = {
 };
 function localfile(urlpath, response){
   // console.log("localfile: " + process.cwd());
+  if(urlpath == "/"){
+    urlpath = "/index.html"
+  }
   path.exists("." + urlpath, function (exists) {
     var realPath;
     if (!exists) {

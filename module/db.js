@@ -44,8 +44,8 @@ function insert(cb, info){
    + title + "', '"
    + content + "','" 
    + name + "','" 
-   + email + "', " 
-   + phone +")";
+   + email + "', '" 
+   + phone +"')";
   runSQL(sql, function(state){
     //console.log(sql + ". state: " + state);
     cb(state);

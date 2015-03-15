@@ -21,7 +21,7 @@ function initdb(){
         return 1
     fi
     local initSQL="BEGIN TRANSACTION;\
-CREATE TABLE feedback (id INTEGER PRIMARY KEY, title TEXT, content TEXT, username TEXT, useremail TEXT, userphone NUMERIC);\
+CREATE TABLE feedback (id INTEGER PRIMARY KEY, title TEXT, content TEXT, username TEXT, useremail TEXT, userphone TEXT);\
 CREATE TABLE category (logoPath TEXT, id INTEGER PRIMARY KEY, type TEXT, desc TEXT);\
 CREATE TABLE contact (URI TEXT, photoPath TEXT, id INTEGER PRIMARY KEY, name TEXT, phone NUMERIC, phone2 NUMERIC, phone3 NUMERIC, phone4 NUMERIC, phone5 NUMERIC, sex TEXT, age NUMERIC, email TEXT, email2 TEXT,createTime TEXT,createDev TEXT, lastAccessTime TEXT,lastAccessDev TEXT,lastModifyTime TEXT,lastModifyDev TEXT,others TEXT,is_deleted TEXT default 0);\
 CREATE TABLE devices (lastSyncTime TEXT, resourcePath TEXT, ip TEXT, name TEXT, id INTEGER PRIMARY KEY, device_id TEXT, account TEXT);\

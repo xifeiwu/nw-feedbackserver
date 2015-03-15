@@ -142,10 +142,10 @@ span.msg{
   text-align:center;
   color:#939395;
   }
-  .bzfkOk strong{
-    font:bold 14px/30px simsun;
-    color:#000;
-  }
-  .bzfkOk img{
-    margin-bottom:10px;
-  }
+.bzfkOk strong{
+  font:bold 14px/30px simsun;
+  color:#000;
+}
+.bzfkOk img{
+  margin-bottom:10px;
+}

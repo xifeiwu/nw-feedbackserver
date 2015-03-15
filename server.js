@@ -28,6 +28,7 @@ function start(route, handle) {
   }
   var server = http.createServer(onRequest);
   server.listen(config.HTTPPORT);
+  console.log("Server has started at port: " + config.HTTPPORT);
 }
 
 exports.start = start;
