@@ -1,0 +1,151 @@
+body{
+  margin:0;color:#6c6c6c;font:12px/21px "宋体"
+}
+ul,ol,li,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,input{
+  margin:0;padding:0
+}
+h1,h2,h3,h4,h5,h6{
+  font-size:12px;font-weight:normal
+}
+img,fieldset{
+  border:0
+}
+div,ul,dl{
+  zoom:1
+}
+div:after, ul:after, dl:after {
+  content: "";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+.mainR {
+  width: 675px;
+  margin:0 auto;
+}
+
+.bzBg {
+  background: url(../images/bzBg.png) 0 300px no-repeat
+}
+.bzfkInfo {
+  padding: 95px 0 0 395px;
+  background-position: -615px 20px;
+  border-bottom: 1px solid #e6e6e6;
+  height: 40px
+}
+
+.bzfkDl {
+  background: #f8f8f8;
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #fff
+}
+.bzfkDl dt {
+  width: 65px;
+  padding-top: 46px;
+  float: left;
+  margin: 20px 30px;
+  display: inline;
+  font: 16px/21px "\5FAE\8F6F\96C5\9ED1";
+  color: #82a90d
+}
+.bzfkDl dt.dt1 {
+  background-position: 0 0
+}
+.bzfkDl dt.dt2 {
+  background-position: -80px 0
+}
+.bzfkDl dt.dt3 {
+  background-position: -160px 0
+}
+.bzfkDl dt span.fGray {
+  color: #6c6c6c
+}
+.bzfkDl dd {
+  width: 400px;
+  line-height: 25px;
+  padding: 20px 28px 20px 0;
+  float: left
+}
+.bzfkDl dd p {
+  height: 21px;
+  padding: 5px 0;
+  overflow: hidden;
+  line-height: 16px
+}
+.bzfkDl dd p.p2 {
+  height: 15px;
+  padding: 10px;
+  line-height: 15px
+}
+.bzfkTextarea {
+  width: 504px;
+  height: 177px;
+  border: 1px solid #e6e6e6
+}
+.bzfkInputText {
+  border: 1px solid #e6e6e6;
+  height: 15px;
+  padding: 3px 5px
+}
+.bzfkDl .fRed, .bzfkDl a.fRed:hover {
+  color: #f00
+}
+
+
+.bzfkP {
+  padding: 25px 0;
+  text-align: center
+}
+.bzfkBtn {
+  width: 75px;
+  height: 25px;
+  cursor: pointer;
+  border: 0;
+  background-position: -240px -60px;
+  font-size: 14px;
+  color: #fff;
+  font-family: "\5FAE\8F6F\96C5\9ED1";
+  padding-bottom: 3px;
+  margin-top: 10px
+}
+.bzfkBtn2 {
+  width: 75px;
+  height: 25px;
+  cursor: pointer;
+  border: 0;
+  background-position: -320px -60px;
+  font-size: 14px;
+  color: #fff;
+  font-family: "\5FAE\8F6F\96C5\9ED1";
+  padding-bottom: 3px;
+  margin-top: 10px;
+}
+
+span.msg{
+  background:#ffffcb;
+  margin:5px 0;
+  display:block;
+  color:#ff3334;
+  border:1px solid #e3e3e3;
+  padding:0 10px;
+  display:none;
+}
+
+.bzfkOk{
+  padding:40px 0 80px;
+  border:1px solid #e6e6e6;
+  clear:both;
+}
+.bzfkOk p{
+  text-align:center;
+  color:#939395;
+  }
+  .bzfkOk strong{
+    font:bold 14px/30px simsun;
+    color:#000;
+  }
+  .bzfkOk img{
+    margin-bottom:10px;
+  }
