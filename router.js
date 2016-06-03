@@ -77,14 +77,14 @@ function localfile(urlpath, response){
   if(urlpath == "/"){
     urlpath = "/index.html"
   }
-  path.exists("." + urlpath, function (exists) {
+  fs.exists("." + urlpath, function (exists) {
     var realPath;
     if (!exists) {
       realPath = urlpath;
     }else {
       realPath = "." + urlpath;
     }
-    path.exists(realPath, function (exists) {
+    fs.exists(realPath, function (exists) {
       if (!exists) {
         response.writeHead(404, {
           'Content-Type': 'text/plain'

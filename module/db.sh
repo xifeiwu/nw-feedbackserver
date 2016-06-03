@@ -5,7 +5,6 @@ if [ $# -gt 2 -o $# -lt 1 ]; then
 fi
 action=$1
 
-isInstallSqlite3=`which sqlite3`
 if ! which sqlite3 > /dev/null; then
     echo The program 'sqlite3' is currently not installed. You can install it by typing:
     echo sudo apt-get install sqlite3
