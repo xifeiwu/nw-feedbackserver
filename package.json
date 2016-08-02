@@ -1,6 +1,11 @@
 {
   "name": "feedbackserver",
   "main": "start.js",
+  "scripts": {
+    "dev": "nodemon .",
+    "debug": "node-debug .",
+    "inspect": "node-inspect ."
+  },
   "version": "0.0.1",
   "window": {
     "title": "反馈服务器",
