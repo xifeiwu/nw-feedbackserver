@@ -2,8 +2,8 @@ var config = require("./config");
 var path = require('path');
 var fs = require('fs');
 
-function route(handle, urlpath, data, response) {
-  switch(urlpath){
+function route(handle, pathName, data, response) {
+  switch(pathName){
   	case "/callapi":
   		callApi(handle, data, response);
   	break;
@@ -11,13 +11,13 @@ function route(handle, urlpath, data, response) {
       // response.writeHead(404, {'Content-Type': 'text/plain'});
       // response.write("Invalid Call");
       // response.end();
-      localfile(urlpath, response);
+      localfile(pathName, response);
   	break;
   }
-  // if (typeof handle[urlpath] === 'function') {
-  //   return handle[urlpath]();
+  // if (typeof handle[pathName] === 'function') {
+  //   return handle[pathName]();
   // } else {
-  //   console.log("No request handler found for " + urlpath);
+  //   console.log("No request handler found for " + pathName);
   //   return "404 Not found";
   // }
 }
@@ -72,56 +72,53 @@ var mimeTypes = {
      "svg": "image/svg+xml",
      "ico": "image/x-icon"
 };
-function localfile(urlpath, response){
+
+function localfile(pathName, response){
   // console.log("localfile: " + process.cwd());
-  if(urlpath == "/"){
-    urlpath = "/index.html"
+
+  if(pathName == "/"){
+    pathName = "/index.html"
   }
-  fs.exists("." + urlpath, function (exists) {
-    var realPath;
+  var parser = /(.*)\.([a-zA-z]+)/;
+  var result = parser.exec(pathName);
+  var suffix = result[2];
+  var filePath = './static/' + suffix + pathName;
+  fs.exists(filePath, function (exists) {
     if (!exists) {
-      realPath = urlpath;
+      response.writeHead(404, {
+        'Content-Type': 'text/plain'
+      });
+      response.write("This request URL " + filePath + " was not found on this server.");
+      response.end();
     }else {
-      realPath = "." + urlpath;
-    }
-    fs.exists(realPath, function (exists) {
-      if (!exists) {
-        response.writeHead(404, {
-          'Content-Type': 'text/plain'
-        });
-        response.write("This request URL " + realPath + " was not found on this server.");
-        response.end();
-      }else {
-        fs.readFile(realPath, "binary", function (err, file) {
-          if (err) {
-            response.writeHead(500, {
-                'Content-Type': 'text/plain'
-            });
-            response.end(err.message);
-          } else {
-            var content_type;
-            var suffix = urlpath.substring(urlpath.lastIndexOf('.') + 1).toLowerCase();
-            switch(suffix){
-            case 'css':
-            case 'mp3':
-            case 'ogg':
-            case 'js':
-            case 'svg':
-            case 'ico':
-              content_type = mimeTypes[suffix];
-              break;
-            default:
-              content_type = 'text/html';
-              break;
-            }
-            response.writeHead(200, {
-              'Content-Type': content_type
-            });
-            response.write(file, "binary");
-            response.end();
+      fs.readFile(filePath, "binary", function (err, file) {
+        if (err) {
+          response.writeHead(500, {
+              'Content-Type': 'text/plain'
+          });
+          response.end(err.message);
+        } else {
+          var content_type;
+          switch(suffix){
+          case 'css':
+          case 'mp3':
+          case 'ogg':
+          case 'js':
+          case 'svg':
+          case 'ico':
+            content_type = mimeTypes[suffix];
+            break;
+          default:
+            content_type = 'text/html';
+            break;
           }
-        });
-      }
-    });
+          response.writeHead(200, {
+            'Content-Type': content_type
+          });
+          response.write(file, "binary");
+          response.end();
+        }
+      });
+    }
   });
 }

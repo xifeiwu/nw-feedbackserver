@@ -1,6 +1,5 @@
 var http = require("http");
 var url = require("url");
-var path = require('path');
 var fs = require('fs');
 var util = require('util');
 var cp = require('child_process');
@@ -10,9 +9,10 @@ var now= new Date();
 
 function start(route, handle) {
   function onRequest(request, response) {
-    var path = request.url;
+    showRequest(request);
 
-    console.log("In Server.js, Request for: " + path);
+    var pathName = request.url;
+    console.log("In Server.js, Request for: " + pathName);
     request.setEncoding("utf8");
 
     var postData = "";
@@ -22,7 +22,10 @@ function start(route, handle) {
     });
     request.addListener("end", function() {
       console.log("In Server.js, postData: '"+ postData + "'.");
-      route(handle, path, postData, response);
+      route(handle, pathName, postData, response);
+    });
+    request.on('error', function(err) {
+      console.error(err.stack);
     });
   }
   var server = http.createServer(onRequest);
@@ -32,10 +35,16 @@ function start(route, handle) {
 
 exports.start = start;
 
-
-    // console.log("=========================================");
-    // var path = decodeURIComponent(url.parse(request.url).path);
-    // console.log(request);
-    // console.log(url.parse(request.url));
-    // console.log(request.url);
-    // console.log(request.headers.host);
+function showRequest(request) {
+  var forbidden = [];
+  var allowed = ['/'];
+  var url = request.url;
+  // in forbidden, or not in allowed.
+  if ((forbidden.indexOf(url) !== -1) || (allowed.indexOf(url) === -1)) {
+    return;
+  }
+  console.log('==========' + url + '==========');
+  console.log(request.url);
+  console.log(request.method);
+  console.log(request.headers);
+}
