@@ -11,7 +11,11 @@ function route(handle, pathName, data, response) {
       // response.writeHead(404, {'Content-Type': 'text/plain'});
       // response.write("Invalid Call");
       // response.end();
-      localfile(pathName, response);
+      if (mimeTypesReg.test(pathName)) {
+        localfile(pathName, response);
+      } else {
+        responseError(response, pathName + ' is not found.');
+      }
   	break;
   }
   // if (typeof handle[pathName] === 'function') {
@@ -59,23 +63,22 @@ function responseError(response, content, code){
   response.end();
 }
 
+var mimeTypesReg = /.(html|js|css|png|mp3|ogg|jpg|jpeg|svg|ico|txt)$/;
 var mimeTypes = {
      "html": "text/html",
-     "jpeg": "image/jpeg",
-     "jpg": "image/jpeg",
-     "png": "image/png",
      "js": "application/javascript",
      "css": "text/css",
-     "txt": "text/plain",
+     "png": "image/png",
      "mp3": "audio/mpeg3",
      "ogg": "audio/mpeg",
+     "jpg": "image/jpeg",
+     "jpeg": "image/jpeg",
      "svg": "image/svg+xml",
-     "ico": "image/x-icon"
+     "ico": "image/x-icon",
+     "txt": "text/plain",
 };
 
 function localfile(pathName, response){
-  // console.log("localfile: " + process.cwd());
-
   if(pathName == "/"){
     pathName = "/index.html"
   }
