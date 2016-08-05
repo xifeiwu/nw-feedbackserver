@@ -82,7 +82,12 @@ function localfile(pathName, response){
   var parser = /(.*)\.([a-zA-z]+)/;
   var result = parser.exec(pathName);
   var suffix = result[2];
-  var filePath = './static/' + suffix + pathName;
+  var filePath = '';
+  if (suffix === 'html') {
+    filePath = './static/' + suffix + pathName;
+  } else {
+    filePath = './static' + pathName;
+  }
   fs.exists(filePath, function (exists) {
     if (!exists) {
       response.writeHead(404, {

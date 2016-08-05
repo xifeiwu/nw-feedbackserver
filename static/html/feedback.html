@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/feedback.css"/>
+    <script type="text/javascript" src="js/feedback.js"></script>
+  </head>
+  <body>
+    <div j-tab-cnt="j-feedback" id="j-feedback" class="mainR" style="display: block; border: 1px solid rgb(230, 230, 230);">
+        <div id="fbct">
+            <p class="bzfkInfo bzBg">
+            </p>
+            <dl class="bzfkDl">
+                <dt class="dt1 bzBg"></dt>
+                <dd>
+                    <p>选择类型：</p>
+                    <p class="p2">
+                        <input type="radio" name="fb_class" id="fb_class1" value="错误反馈">
+                        错误反馈
+                        <input type="radio" name="fb_class" id="fb_class2" value="改善建议">
+                        改善建议
+                        <input type="radio" name="fb_class" id="fb_class3" value="功能需求">
+                        功能需求
+                        <input type="radio" name="fb_class" id="fb_class4" value="新手咨询">
+                        新手咨询
+                        <input type="radio" name="fb_class" id="fb_class5" value="其他">
+                        其他
+                    </p>
+                    <span id="erroClass" class="msg">请选择反馈类型</span> <br>
+                </dd>
+            </dl>
+            <dl class="bzfkDl">
+                <dt class="dt2 bzBg"></dt>
+                <dd>请详细描述您的建议、意见、问题等。<br>
+                    <span id="erroContent" class="msg">反馈内容字数1~2000之间</span>
+                    <textarea id="content" class="bzfkTextarea"></textarea>
+                </dd>
+            </dl>
+            <dl class="bzfkDl">
+                <dt class="dt3 bzBg">（选填）</dt>
+                <dd>
+                    <p>用户名：
+                        <input name="name" id="name" type="text" class="bzfkInputText" size="30">
+                    </p>
+                    <span class="msg" id="erroName">请输入您的用户名</span> 
+                    <p>手　机：
+                        <input name="phone" id="phone" type="text" class="bzfkInputText" size="30">
+                    </p>
+                    <span class="msg" id="erroPhone">请输入正确的电话号码</span>
+                    <p>邮　箱：
+                        <input name="email" id="email" type="text" class="bzfkInputText" size="30">
+                    </p>
+                    <span class="msg" id="erroMail">请输入正确的邮件地址</span> 
+                </dd>
+            </dl>
+            <p class="bzfkP">
+                <input type="submit" id="feedbacksubmit" class="bzfkBtn bzBg" value="提交" style="visibility: visible;">
+                <br>
+                <br>
+                <span data-private-display="" style="display: none;">正在测速中，请稍后...     <a href="javascript:void(0);" class="fOrange">5</a></span><span style="display:none">
+                    测速进行中，请耐心等待！提交将终止测速，
+                    <a id="j-speed-stop" style="text-decoration: underline;" class="fOrange" href="javascript:void(0)">完成提交</a>
+                </span> 
+            </p>
+        </div>
+        <div id="successField" class="bzfkOk" style="display:none">
+            <p>
+                <img src="imgs/ok.jpg" width="80" height="87" alt="提交成功" title="提交成功"><br>
+                <strong>提交成功！感谢您对新型桌面工作的支持。</strong><br>
+                我们会认真处理您的意见或建议，并对您的建议做出回复。<br>
+                我们的联系方式：yuanzhe@iscas.ac.cn<br>
+                <br>
+                <a href="" onclick="goToSubmit()">返回提交界面&gt;&gt;</a>
+            </p>
+        </div>
+    </div>
+  </body>
+</html>

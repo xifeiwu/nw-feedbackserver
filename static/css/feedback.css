@@ -27,7 +27,7 @@ div:after, ul:after, dl:after {
 }
 
 .bzBg {
-  background: url(../images/bzBg.png) 0 300px no-repeat
+  background: url(../imgs/bzBg.png) 0 300px no-repeat
 }
 .bzfkInfo {
   padding: 95px 0 0 395px;
