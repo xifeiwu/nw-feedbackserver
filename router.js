@@ -6,24 +6,21 @@ function route(handle, pathName, data, response) {
   switch(pathName){
   	case "/callapi":
   		callApi(handle, data, response);
-  	break;
+  	 break;
+    case '/xhr':
+      responseXHR(response, 'works ok.');
+      break;
   	default:  	
       // response.writeHead(404, {'Content-Type': 'text/plain'});
       // response.write("Invalid Call");
       // response.end();
-      if (mimeTypesReg.test(pathName)) {
-        localfile(pathName, response);
+      if (mimeTypesReg.test(pathName) || pathName === '/') {
+        loadFile(pathName, response);
       } else {
         responseError(response, pathName + ' is not found.');
       }
-  	break;
+      break;
   }
-  // if (typeof handle[pathName] === 'function') {
-  //   return handle[pathName]();
-  // } else {
-  //   console.log("No request handler found for " + pathName);
-  //   return "404 Not found";
-  // }
 }
 exports.route = route;
 
@@ -49,6 +46,19 @@ function callApi(handle, data, response){
       responseError(response, dataObj.api + " is not a function.");
     }
   }
+}
+
+function responseXHR(response, content, code) {
+  if (!code) {
+    code = 200;
+  }
+  content = content ? content : '';
+  var result = {};
+  result.title = 'Success';
+  result.content = content;
+  response.writeHead(code, {'Content-Type': 'text/plain'});
+  response.write(JSON.stringify(result));
+  response.end();
 }
 
 function responseError(response, content, code){
@@ -78,7 +88,7 @@ var mimeTypes = {
      "txt": "text/plain",
 };
 
-function localfile(pathName, response){
+function loadFile(pathName, response){
   if(pathName == "/"){
     pathName = "/index.html"
   }

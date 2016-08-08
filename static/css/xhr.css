@@ -1,0 +1,30 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  margin: 0px auto;
+  max-width: 80%;
+}
+table caption {
+  margin-bottom: 5px;
+}
+table, th, td
+{
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+table th {
+  background-color: #f9f9f9;
+}
+
+col.code {
+  width: 10%;
+  background-color: #f9f9f9;
+}
+
+col.message {
+  width: 30%;
+}
+
+table tr td:first-child {
+  text-align: center;
+}
